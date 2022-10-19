@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body
+{
+  background:black;
+  color:white;
+  margin:10px;
+  text-align:center;
+}
+@media (min-width:1200px)
+{
+  body
+  {
+    width:1000px;
+    margin:auto;
+  }
+}
+.bluescreen
+{
+  border:1px solid rgba(128,128,255,0.7);
+  background:rgba(64,64,64,0.7);
+  padding:5px;
+}
+.choiceContainer
+{
+  margin-top:10px;
+}
+.choice
+{
+  display:inline-block;
+  padding:10px;
+  color:rgba(192,192,255,0.9);
+  text-decoration:none;
+  border:1px solid rgba(192,192,255,0.9);
+  background:rgba(0,0,255,0.2);
+}
+</style>
+  </head>
+  <body>
+  </body>
+<script type="text/javascript">
+var loop=0;
+var story_pieces={
+Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short dark hair, plain dark clothing that covered everything but the hands and the head.</p>
+
+<p>Almost all of them had already begun departing, the stone wall behind their section sliding out of the way. The one immediately to my left smirked and pointed to the wall behind me before leaving me alone in the room.</p>
+
+<p>As soon as I stepped toward the wall a blue screen appeared hovering in front of me.</p>
+
+<div class="bluescreen">Who are you? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
+
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+XNXX:`<p class="bluescreen">Intuition (XNXX). You are all about the theoretical and thinking through problems. Patterns and probabilities. What things mean is more important to you than what they are. Explanations and understanding over experience and facts.</p>
+
+<p>I dismissed the screen with a thought. The next room was large, with four tables filling most of the room with enough space to walk around and in between them. One person was standing along each of the walls, a man on my left and a woman across from me and to my right. They were wearing similar clothing to mine but in unique colours.
+
+<p>There were no exits to the room, and a glance behind me showed that the stone wall that I had entered through had closed without me noticing.
+
+<p>I headed down the gap between the tables to the centre of the room and the other three did the same. Just as I got there another blue screen appeared and from what I could see around it everyone else had paused mid-step.
+
+<div class="bluescreen">Another choice. What is more important to you: Feeling/empathy or Thinking/rationality?
+
+<div class="choiceContainer"><a href='javascript:goTo("XNFX");' class="choice">Feeling</a><a href='javascript:goTo("XNTX")' class="choice">Thinking</a></div></div>`,
+}
+
+goTo('Loop0');
+
+function goTo(loc)
+{
+  if(loc=='Loop')
+  {
+    loc+=loop;
+    if(!story_pieces[loc]) loc='Loop0';
+    loop++;
+  }
+  var b=document.body;
+  b.innerHTML='<h1>'+loc+'</h1>';
+  if(!story_pieces[loc])
+  {
+    b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
+    return;
+  }
+  b.innerHTML+=story_pieces[loc];
+}
+</script>
+</html>

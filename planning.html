@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<style>
+body
+{
+  background:black;
+  color:white;
+  margin:0;
+  text-align:center;
+}
+.data
+{
+  flex:1 0 99%;
+}
+.childDiv
+{
+  display:flex;
+  flex:1 0 49%;
+  flex-wrap:wrap;
+  background:rgba(255,255,255,0.2);
+  z-index:1;
+}
+textarea
+{
+  resize:none;
+  width:calc(100% - 4px);
+  padding:2px;
+  text-align:center;
+  border:none;
+  outline:none;
+  background:rgba(0,0,0,0.5);
+  color:white;
+  display:block;
+}
+.Resolution .writing
+{
+  height:18em;
+}
+.Attack .writing
+{
+  height:10em;
+}
+.Response .writing
+{
+  height:5em;
+}
+</style>
+  </head>
+  <body>
+  </body>
+<script type="text/javascript">
+Quill.register('modules/counter', function(quill, options)
+{
+  var wordcountDiv=document.querySelector('#'+options.id+'_wordcount');
+  quill.on('text-change', function()
+  {
+    var text=quill.getText();
+    var count=text.trim().split(/\s+/).length;
+    if(text.trim().length==0) count=0;
+    wordcountDiv.innerText=count + ' word'+(count==1?'':'s');
+    var contents=quill.getContents();
+    var stored=window.localStorage[options.id];
+    if(stored) stored=JSON.parse(stored);
+    else stored={planning:'', writing:''}
+    stored.writing=contents;
+    window.localStorage[options.id]=JSON.stringify(stored);
+    updateWordcounts();
+  });
+});
+
+function updateWordcounts()
+{
+  var master=document.querySelector('#allWordcount');
+  var wordcounts=Array.from(document.querySelectorAll('.wordcount'));
+  var total=0;
+  for(var i=0; i<wordcounts.length; i++)
+  {
+    var count=parseInt(wordcounts[i].innerText);
+    total+=isNaN(count)?0:count;
+  }
+  master.innerHTML=total;
+}
+
+var start={section:'All', name:'Start', children:[
+  {section:'Setup', name:'Intuitive', mbti:'XNXX', children:[
+    {section:'Response', name:'Idealist', adjective:'Diplomatic', mbti:'XNFX', children:[
+      {section:'Attack', name:'Mentor', adjective:'Developing', mbti:'XNFJ', children:[
+        {section:'Resolution', name:'Teacher', adjective:'Educating', mbti:'ENFJ', functions:'FeNiSeTi'},
+        {section:'Resolution', name:'Counselor', adjective:'Guiding', mbti:'INFJ', functions:'NiFeTiSe'}]},
+      {section:'Attack', name:'Advocate', adjective:'Mediating', mbti:'XNFP', children:[
+        {section:'Resolution', name:'Champion', adjective:'Motivating', mbti:'ENFP', functions:'NeFiTeSi'},
+        {section:'Resolution', name:'Healer', adjective:'Conciliating', mbti:'INFP', functions:'FiNeSiTe'}]}]},
+    {section:'Response', name:'Rational', adjective:'Strategic', mbti:'XNTX', children:[
+      {section:'Attack', name:'Coordinator', adjective:'Arranging', mbti:'XNTJ', children:[
+        {section:'Resolution', name:'Fieldmarshal', adjective:'Mobilising', mbti:'ENTJ', functions:'TeNiSeFi'},
+        {section:'Resolution', name:'Mastermind', adjective:'Entailing', mbti:'INTJ', functions:'NiTeFiSe'}]},
+      {section:'Attack', name:'Engineer', adjective:'Constructing', mbti:'XNTP', children:[
+        {section:'Resolution', name:'Inventor', adjective:'Devising', mbti:'ENTP', functions:'NeTiFeSi'},
+        {section:'Resolution', name:'Architect', adjective:'Designing', mbti:'INTP', functions:'TiNeSiFe'}]}]}]},
+  {section:'Setup', name:'Sensing', mbti:'XSXX', children:[
+    {section:'Response', name:'Guardian', adjective:'Logistical', mbti:'XSXJ', children:[
+      {section:'Attack', name:'Administrator', adjective:'Regulating', mbti:'XSTJ', children:[
+        {section:'Resolution', name:'Supervisor', adjective:'Enforcing', mbti:'ESTJ', functions:'TeSiNeFi'},
+        {section:'Resolution', name:'Inspector', adjective:'Certifying', mbti:'ISTJ', functions:'SiTeFiNe'}]},
+      {section:'Attack', name:'Conservator', adjective:'Supporting', mbti:'XSFJ', children:[
+        {section:'Resolution', name:'Provider', adjective:'Supplying', mbti:'ESFJ', functions:'FeSiNeTi'},
+        {section:'Resolution', name:'Protector', adjective:'Securing', mbti:'ISFJ', functions:'SiFeTiNe'}]}]},
+    {section:'Response', name:'Artisan', adjective:'Tactical', mbti:'XSXP', children:[
+      {section:'Attack', name:'Operator', adjective:'Expediting', mbti:'XSTP', children:[
+        {section:'Resolution', name:'Promotor', adjective:'Persuading', mbti:'ESTP', functions:'SeTiFeNi'},
+        {section:'Resolution', name:'Crafter', adjective:'Instrumenting', mbti:'ISTP', functions:'TiSeNiFe'}]},
+      {section:'Attack', name:'Entertainer', adjective:'Improvising', mbti:'XSFP', children:[
+        {section:'Resolution', name:'Performer', adjective:'Demonstrating', mbti:'ESFP', functions:'SeFiTeNi'},
+        {section:'Resolution', name:'Composer', adjective:'Synthesizing', mbti:'ISFP', functions:'FiSeNiTe'}]}]}]}]};
+        
+var startDiv=document.createElement('div');
+document.body.appendChild(startDiv);
+startDiv.setAttribute('style', 'display:flex; width:3840px; flex-wrap:wrap;');
+startDiv.innerHTML=`<div style="flex:1;">Total wordcount: <span id="allWordcount">0</span></div><div class="data">Start</div>`;
+addTextAreas(startDiv.querySelector('div:nth-child(2)'), 'Start');
+showSections(startDiv, start.children);
+
+var starts=[
+  {name:'Start+1 / Loop 2', id:'l2'},
+  {name:'Start+4 / Loop 5', id:'l5'},
+  {name:'Start+8 / Loop 9', id:'l9'},
+  {name:'Start+12 / Loop 13', id:'l13'},
+  {name:'Start+15 / Loop 16', id:'l15'},
+  {name:'First Black', id:'black'}];
+
+for(var i=0; i<starts.length; i++)
+{
+  var div=document.createElement('div');
+  document.body.appendChild(div);
+  div.innerHTML=starts[i].name;
+  addTextAreas(div, starts[i].id);
+}
+
+function addTextAreas(div, id)
+{
+  var data=window.localStorage[id];
+  if(!data) data={planning:'', writing:''};
+  else data=JSON.parse(data);
+
+  var wordcountDiv=document.createElement('div');
+  wordcountDiv.setAttribute('class', 'wordcount');
+  div.appendChild(wordcountDiv);
+  wordcountDiv.id=id+'_wordcount';
+  wordcountDiv.innerText='0 words';
+
+  var planning=document.createElement('textarea');
+  planning.setAttribute('class', 'planning');
+  planning.setAttribute('placeholder', 'Planning');
+  planning.value=data.planning;
+  div.appendChild(planning);
+  var writing=document.createElement('div');
+  writing.setAttribute('class', 'writing');
+  writing.id=id+'_writing';
+  div.appendChild(writing);
+  //writing.setAttribute('placeholder', 'Writing');
+  //writing.value=data.writing;
+  var quill=new Quill('#'+id+'_writing', {modules:{counter:{id:id}}});
+  try
+  {
+    quill.setContents(data.writing);
+    
+  } catch(e) {}
+
+  planning.addEventListener('keyup', save.bind(undefined, planning, quill, id));
+}
+
+function save(planning, writing, id)
+{
+  window.localStorage[id]=JSON.stringify({planning:planning.value, writing:writing.getContents()});
+}
+
+function showSections(div, children)
+{
+  for(var i=0; i<children.length; i++)
+  {
+    var c=children[i];
+    var childDiv=document.createElement('div');
+    div.appendChild(childDiv);
+    childDiv.setAttribute('class', 'childDiv');
+    childDiv.innerHTML=`<div class="data ${c.section}">${c.section}<br />
+${c.name+(c.adjective?':'+c.adjective:'')}<br />
+${c.mbti+(c.functions?'/'+c.functions:'')}</div>`;
+    addTextAreas(childDiv.querySelector('.data'), c.mbti);
+    if(c.children) showSections(childDiv, c.children);
+  }
+}
+</script>
+</html>
