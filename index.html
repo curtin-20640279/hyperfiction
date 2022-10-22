@@ -38,20 +38,44 @@ body
   border:1px solid rgba(192,192,255,0.9);
   background:rgba(0,0,255,0.2);
 }
+.choice.seen
+{
+  color:rgba(255,255,0,0.9);
+  border:1px solid rgba(255,255,0,0.9);
+  background:rgba(255,255,0,0.2);
+}
+.choice.allSeen
+{
+  color:rgba(128,128,128,0.9);
+  border:1px solid rgba(128,128,128,0.9);
+  background:rgba(128,128,128,0.2);
+}
+.choice.missing
+{
+  color:rgba(255,0,0,0.9);
+  border:1px solid rgba(255,0,0,0.9);
+  background:rgba(255,0,0,0.2);
+}
+.progress
+{
+  margin:0;
+  font-size:0.75em;
+}
 </style>
   </head>
   <body>
   </body>
 <script type="text/javascript">
 var loop=0;
+var seen=[];
 var story_pieces={
-Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short dark hair, plain dark clothing that covered everything but the hands and the head.</p>
+Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short blonde hair, plain dark clothing covering everything but the hands and the head.</p>
 
 <p>Almost all of them had already begun departing, the stone wall behind their section sliding out of the way. The one immediately to my left smirked and pointed to the wall behind me before leaving me alone in the room.</p>
 
 <p>As soon as I stepped toward the wall a blue screen appeared hovering in front of me.</p>
 
-<div class="bluescreen">Who are you? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
+<div class="bluescreen">Who are you, Dann? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
 
 <div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
 XNXX:`<p class="bluescreen">Intuition (XNXX). You are all about the theoretical and thinking through problems. Patterns and probabilities. What things mean is more important to you than what they are. Explanations and understanding over experience and facts.</p>
@@ -305,12 +329,75 @@ function goTo(loc)
   }
   var b=document.body;
   b.innerHTML='<h1>'+loc+'</h1>';
+  if(seen.length>0 && loc.indexOf('Loop')==0)
+  {
+    b.innerHTML+='<h2 class="progress">'+seen.length+' of '+Object.keys(story_pieces).length+' pieces seen</h2>';
+  }
   if(!story_pieces[loc])
   {
     b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
     return;
   }
   b.innerHTML+=story_pieces[loc];
+
+  if(seen.indexOf(loc)==-1) seen.push(loc);
+
+  var choices=Array.from(document.querySelectorAll('.choice'));
+  var available=Object.keys(story_pieces);
+  for(var i=0; i<choices.length; i++)
+  {
+    var choice=choices[i].href.split('goTo(')[1].split(')')[0].slice(1,-1);
+    if(choice=='Loop') continue;
+    if(seen.indexOf(choice)!=-1)
+    {
+      choices[i].classList.toggle('seen', true);
+      choices[i].title='Partially completed, some new paths left to explore';
+    }
+    if(!story_pieces[choice])
+    {
+      choices[i].classList.toggle('missing', true);
+      choices[i].title='Missing';
+    }
+    var possible_ends=['ENFJ', 'INFJ', 'ENFP', 'INFP', 'ENTJ', 'INTJ', 'ENTP', 'INTP', 'ESTJ', 'ISTJ', 'ESFJ', 'ISFJ', 'ESTP', 'ISTP', 'ESFP', 'ISFP'];
+    var ends=[];
+    for(var j=0; j<possible_ends.length; j++)
+    {
+      var p=possible_ends[j];
+      if(!story_pieces[p])
+      {
+        p='X'+p.slice(1);
+      }
+      if(!story_pieces[p])
+      {
+        continue;
+      }
+      var pass=false;
+      for(var k=0; k<4; k++)
+      {
+        if(choice[k]!='X' && choice[k]!=p[k])
+        {
+          pass=true;
+          break;
+        }
+      }
+      if(pass) continue;
+      ends.push(p);
+    }
+    var all_seen=true;
+    for(var j=0; j<ends.length; j++)
+    {
+      if(seen.indexOf(ends[j])==-1)
+      {
+        all_seen=false;
+        break;
+      }
+    }
+    if(all_seen && choices[i].title!='Missing')
+    {
+      choices[i].classList.toggle('allSeen', true);
+      choices[i].title='Fully completed, no new paths to explore';
+    }
+  }
 }
 </script>
 </html>
