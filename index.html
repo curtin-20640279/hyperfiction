@@ -346,7 +346,9 @@ function goTo(loc)
   b.innerHTML='<h1>'+loc+'</h1>';
   if(seen.length>0 && loc.indexOf('Loop')==0)
   {
-    b.innerHTML+='<h2 class="progress">'+seen.length+' of '+Object.keys(story_pieces).length+' pieces seen</h2>';
+    var total=Object.keys(story_pieces).length;
+    b.innerHTML+='<h2 class="progress">'+seen.length+' of '+total+' pieces seen</h2>';
+    if(seen.length==total)b.innerHTML='<p>&lt;&lt;You\'ve read all that is written, refresh the page to reset the story.&gt;&gt;</p>';
   }
   if(!story_pieces[loc])
   {
