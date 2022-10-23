@@ -67,15 +67,31 @@ body
   </body>
 <script type="text/javascript">
 var loop=0;
+var greySeen=false;
 var seen=[];
 var story_pieces={
+LoopMissing:`<div class="bluescreen">&lt;&lt;This loop not written in the 2,500 word excerpt. You can continue to make choices to explore the rest of what is written.&gt;&gt;
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
 Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short blonde hair, plain dark clothing covering everything but the hands and the head.</p>
 
 <p>Almost all of them had already begun departing, the stone wall behind their section sliding out of the way. The one immediately to my left smirked and pointed to the wall behind me before leaving me alone in the room.</p>
 
 <p>As soon as I stepped toward the wall a blue screen appeared hovering in front of me.</p>
 
+<p>The red choice I could feel was "missing", whatever that meant, so I chose the other one.</p>
+
 <div class="bluescreen">Who are you, Dann? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
+
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop1:`<p>And then I was back in the starting room again. I took a deep breath, suppressing a sob, my emotions catching up with me now that I had a moment.</p>
+
+<p>Most of the copies of me were already leaving the room, only the one immediately to my right not moving. He was looking around with a dopey stunned look on his face that struck me as funny.</p>
+
+<p>Damn, I had been completely clueless. I pointed to the wall behind him and then turned to the wall behind me, triggering the blue screen.</p>
+
+<p>The Sensing choice was still red and missing, not that I had learned what that meant. The other choice was now yellow which I somehow just knew meant that the path was partially complete, it would start the same but with different choices that would lead to new experiences.</p>
+
+<div class="bluescreen"><p>And so you come back to the first choice. Choose and explore who you could be.</p>
 
 <div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
 XNXX:`<p class="bluescreen">Intuition (XNXX). You are all about the theoretical and thinking through problems. Patterns and probabilities. What things mean is more important to you than what they are. Explanations and understanding over experience and facts.</p>
@@ -172,7 +188,7 @@ XNFP:`<p class="bluescreen">Extroverted Intuition, Introverted Feeling (XNFP). T
 
 <p>A blue screen appeared before the man decided what he was going to do.</p>
 
-<p>Do you jump into new projects before retreating to process them emotionally (Extroverted)?</p>
+<div class="bluescreen"><p>Do you jump into new projects before retreating to process them emotionally (Extroverted)?</p>
 
 <p>Or do you first need to feel strongly about a project before starting it (Introverted)?</p>
 
@@ -324,8 +340,7 @@ function goTo(loc)
   if(loc=='Loop')
   {
     loc+=loop;
-    if(!story_pieces[loc]) loc='Loop0';
-    loop++;
+    if(!story_pieces[loc]) loc='LoopMissing';
   }
   var b=document.body;
   b.innerHTML='<h1>'+loc+'</h1>';
@@ -335,12 +350,17 @@ function goTo(loc)
   }
   if(!story_pieces[loc])
   {
-    b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
+    goTo('Loop');
+    //b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
     return;
   }
   b.innerHTML+=story_pieces[loc];
 
-  if(seen.indexOf(loc)==-1) seen.push(loc);
+  if(seen.indexOf(loc)==-1)
+  {
+    seen.push(loc);
+    if(loc.indexOf('X')==-1 && loc.indexOf('Loop')==-1) loop++;
+  }
 
   var choices=Array.from(document.querySelectorAll('.choice'));
   var available=Object.keys(story_pieces);
@@ -396,6 +416,13 @@ function goTo(loc)
     {
       choices[i].classList.toggle('allSeen', true);
       choices[i].title='Fully completed, no new paths to explore';
+      if(!greySeen)
+      {
+        greySeen=true;
+        var p=document.createElement('p');
+        p.innerHTML=`One of the choices was a new colour, grey. There were no new experiences behind that choice, I'd seen all it had to show. I knew I could live it again, but I couldn't change what happened, and wouldn't make any progress in choosing it.`;
+        document.body.insertBefore(p, document.querySelector('.choiceContainer').parentNode);
+      }
     }
   }
 }
