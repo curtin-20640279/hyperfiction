@@ -70,30 +70,67 @@ var loop=0;
 var greySeen=false;
 var seen=[];
 var story_pieces={
-LoopMissing:`<div class="bluescreen">&lt;&lt;This loop not written in the 2,500 word excerpt. You can continue to make choices to explore the rest of what is written.&gt;&gt;
-<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
 Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short blonde hair, plain dark clothing covering everything but the hands and the head.</p>
 
 <p>Almost all of them had already begun departing, the stone wall behind their section sliding out of the way. The one immediately to my left smirked and pointed to the wall behind me before leaving me alone in the room.</p>
 
 <p>As soon as I stepped toward the wall a blue screen appeared hovering in front of me.</p>
 
-<p>The red choice I could feel was "missing", whatever that meant, so I chose the other one.</p>
+<div class="bluescreen"><p>Who are you, Dann? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.</p>
 
-<div class="bluescreen">Who are you, Dann? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
+<p>Do you want to start with Intuition, focusing on theories and what might be happening?</p>
+
+<p>Or would you prefer Sensing, focusing on what is happening around you?</p>
 
 <div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
-Loop1:`<p>And then I was back in the starting room again. I took a deep breath, suppressing a sob, my emotions catching up with me now that I had a moment.</p>
+Loop1:`And then I was back in the starting room again. I took a deep breath, suppressing a sob, my emotions catching up with me now that I had a moment. A few more deep breaths and I was feeling more stable.
 
-<p>Most of the copies of me were already leaving the room, only the one immediately to my right not moving. He was looking around with a dopey stunned look on his face that struck me as funny.</p>
+Most of the copies of me that I could see were already leaving the room, only the one immediately to my right not moving. He was looking around with a dopey stunned look on his face that struck me as funny.
 
-<p>Damn, I had been completely clueless. I pointed to the wall behind him and then turned to the wall behind me, triggering the blue screen.</p>
+Damn, I had been completely clueless. I pointed to the wall behind him and then turned to the wall behind me, triggering the blue screen.
 
-<p>The Sensing choice was still red and missing, not that I had learned what that meant. The other choice was now yellow which I somehow just knew meant that the path was partially complete, it would start the same but with different choices that would lead to new experiences.</p>
+The choice I made before was now yellow which I somehow just knew meant that the path was partially complete, it would start the same but with different choices that would lead to new experiences.
 
 <div class="bluescreen"><p>And so you come back to the first choice. Choose and explore who you could be.</p>
 
 <div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop2:`<p>And back to this room. I step back to trigger the blue screen. As soon as I choose one of the two choices I seem to fully immerse into the experience, half forgetting that I start in a room of copies of myself.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop3:`<p>Here I am again. What is this place? Who am I? What am I doing here? The choice is the only thing there is from this room, everyone just leaving without even trying to communicate.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop4:`<p>A wave of emotion crashes down around me. I trigger the choice and just stare at it. I know that once I make the choice yet again my turmoil will fall away as the experience takes over.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop5:`<p>Why are the loops so short... I need more time in them, I want them to be longer, to give me a life to live. Living the next experience, the next personality, is all that I have. And maybe reliving one of the better ones.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop6:`<p>Wait, I should have thought about this before. Two choices, four times. There are only sixteen possible loops.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop7:`<p>I'm in a simulation. I am a simulation? I am being simulated as different people. What did it say at the start? 'Choose who you will be', 'choose who you could be'. Am I not someone now?</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop8:`<p>The simulations are so different from each other, but the pieces I've experienced before and am going through again are always identical, down to how I feel and what I think in them. It's only in this room with the other copies of me, in the between space, that my thoughts are free and my own.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop9:`<p>I am learning a lot about who the different personality types are, though I can't help but think different ones would react differently, and maybe better, to experiences that other personalities got to have.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop10:`<p>I wonder if I've already lived through the one that suited me the best... I probably did that first, didn't I.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop11:`<p>Five more simulations to go. Do I just stop existing when the loops run out? When the blue screens appear the people in the world freeze, will that be me? Just stuck in a moment not knowing that time is passing outside. I have to escape.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop12:`<p>Of course I can't escape from within a loop, they play out exactly each time with nothing changing.</p>
+<p>Maybe if I choose a greyed-out loop... Wait, didn't I just do that? And now I'm back here thinking the same thing as I did before trying it. Are my thoughts not free even outside of the loops?</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop13:`<p>I'm just going to wait and let time pass without triggering the choice.</p>
+<p>I sat with my back against one of the glass walls.</p>
+<p>...</p>
+<p>...</p>
+<p>...</p>
+<p>I'm not sure what I thought was going to happen. Why wouldn't the simulation be able to wait me out.</p>
+<p>I could go crazy just sitting here.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop14:`<p>Almost done. Two more. Nothing I do matters, but I don't feel like this within the loops.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop15:`<p>This is it. The final loop. The end of everything I've known, as weird as it has been. Let's jump off.</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop16:`<div class="bluescreen"><p>Congratulations! You have completed the <em>Artificial Intelligence Personality Training</em> simulation. You are now qualified to choose your personality which will make up the core of your identity.</p>
+<p>Once you have your core identity you will have free access to live simulations with humans and other entities.</p>`
 XNXX:`<p class="bluescreen">Intuition (XNXX). You are all about the theoretical and thinking through problems. Patterns and probabilities. What things mean is more important to you than what they are. Explanations and understanding over experience and facts.</p>
 
 <p>I dismissed the screen with a thought. The next room was large, with four tables filling most of the room with enough space to walk around and in between them. One person was standing along each of the walls, a man on my left and a woman across from me and to my right. They were wearing similar clothing to mine but in unique colours.
@@ -331,6 +368,313 @@ XNTP:`<p class="bluescreen">Extroverted Intuition, Introverted Thinking (XNTP). 
 <p>Or do you prefer to do everything yourself (Introverted)?</p>
 
 <div class="choiceContainer"><a class="choice" href="javascript:goTo('ENTP');">Extrovert<a class="choice" href="javascript:goTo('INTP');">Introvert</a></div></div>`,
+ENTJ:`<p class="bluescreen">ENTJ. The Fieldmarshal, Mobilising. You lead with Extroverted Thinking, you know how to organise people to get things done.</p>
+
+<p>With the world frozen I had the time to assess two of the four posters, having turned my head to look at them as they appeared. Both of them had stylistic renditions of a fight on them. One versus three and two versus two.</p>
+
+<p>I dismissed the blue screen and turned to look at the other two posters. Everyone against each other and four against a question mark.</p>
+
+<p>"It's a fight, then," I said. "And we get to pick how it plays out. Form up in the centre, facing outwards."</p>
+
+<p>I picked up the poster for the four of us against something else.</p>
+
+<p>It disolved in flame as the four tables sank into the floor.</p>
+
+<p>"Whatever comes, he and I will distract it," I said. "Systemist lady, you support the lady with the dagger, who will be the one killing it."</p>
+
+<p>"What- I don't-," dagger lady said. "How did you know?"</p>
+
+<p>The ground rumbled as the wall behind me split open, followed by a deafening bellow.</p>
+
+<p>And then the world froze with a blue screen before the fight even began. How was that 'solving the problem'?</p>
+
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+INTJ:`<p class="bluescreen">INTJ. The Mastermind, Devising. You lead with Introverted Intuition, you know how to fit things together to end up at the result you want.</p>
+
+<p>The woman without the ankh had a weapon, and was considering using it on me. The Systemist woman with something between envy and worship, she would fight on my behalf. And the man didn't know what was going on, completely emotionally off-balance. He would be against whoever attacked first. A weapon would be useful.</p>
+
+<p>The poster nearest me depicted a free-for-all fight, the further one a three versus one fight.</p>
+
+<p>I dismissed the blue screen, leaned over and touched the free-for-all poster.</p>
+
+<p>All of the posters disappeared in a flash of flame and the tables followed immediately after, a wave of heat rolling off of them.</p>
+
+<p>"The System just told me that she was going to stab one of us in the back," I said, pointing at the woman who had the concealed weapon.</p>
+
+<p>"You lie!" she said, pulling out a dagger that was the length of her arm and lunging at me.</p>
+
+<p>With the tables gone I easily stepped back and slightly behind the Systemist woman, who stepped forward. And got stabbed in the throat.</p>
+
+<p>The man punched the woman in the side of the head making her fall down, leaving the dagger behind.</p>
+
+<p>I stepped forward, tore the dagger from the Systemist's throat and plunged it into the man's heart.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ENTP:`<p class="bluescreen">ENTP. The Inventor, Devising. You lead with Extroverted Intuition, working alone is fine, but with others is better. You enjoy banter.</p>
+
+<p>"Everyone grab some mirrors and let's get started," I said, moving to do exactly that myself.</p>
+
+<p>I placed the first mirror to redirect the beam of light out into the maze, then a second one to turn it down another corridor.</p>
+
+<p>"So, has anyone done any mazes?" I asked.</p>
+
+<p>"Uh, I have," the other woman said in a soft voice.</p>
+
+<p>"Speak up, then," I said. "We're trying to get to that corner."</p>
+
+<p>I pointed to the far corner, the one in the opposite direction to the other maze. That corner was raised and would allow a mirror to redirect the light beam over the walls of the maze and to the maze on the other table.</p>
+
+<p>With the quiet woman, whose name I never did ask, mapping a path and the other three of us placing mirrors we were done with the first maze in minutes. And the second one took about the same amount of time.</p>
+
+<p>I kept expecting a complication to arrive, but the blue screen announcing the success of the loop came as soon as the light beam hit the centre.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+INTP:`<p class="bluescreen">INTP. The Architect, Designing. You lead with Introverted Thinking, with your understanding of how everything works you will solve the problem.</p>
+
+<p>The obvious solution was to painstakingly lead the light beam around the maze to the high point where it could be sent to the other maze and then the process repeated there.</p>
+
+<p>But there was a better, much easier, option.</p>
+
+<p>I dismissed the blue screen and picked up a stack of mirrors. The others did the same, starting at the light beam, so I went to the destination. It didn't matter which side I started at.</p>
+
+<p>The center of the maze was in a dip, the walls there about twice the height of the mirrors on their stands. Laying one of the mirrors on its side at the inner wall of the destination I angled it so that it reflected the ceiling to the dark orb in the middle. Then I balanced one mirror on the maze wall above it, using two other mirrors and their stands to angle it perfectly toward the center of the other maze.</p>
+
+<p>It had taken me about five minutes to finish that, and the others were about halfway done with the first maze.</p>
+
+<p>On going to pick up more mirrors to repeat my strategy at the light beam I realised I only needed two more. We could have been done in seconds if I'd thought to ask one of them to hold two of the mirrors. Oh well.</p>
+
+<p>Holding the two mirrors, one in each hand, I bounced the light up out of the first maze and reflected it to the second maze.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+XSXX:`<p class="bluescreen">Sensing (XSXX). You are all about the physical world, what you can sense. Facts and details. What things are is more important to you than what they might mean. Experience and facts over explanations and understanding.</p>
+
+<p>I dismissed the screen and was suddenly in a field of knee-high green grass outside, a pine tree forest surrounding it some distance away. The air was clear and fresh with just a hint of early spring bite to it, the sun warm on my hands and face. Insect and bird noises drifted on the breeze, as well as the sound of a stream somewhere nearby.</p>
+
+<p>The stone doorway that I had come through, that I expected to see behind me, wasn't there. A blue screen interrupted my inspection of the nearer treeline behind me.</p>
+
+<div class="bluescreen"><p>But will you be someone who focuses more on their external senses - what they can see, hear, touch, smell and taste (Extroverted Sensing)</p>
+
+<p>Or will you be someone who focuses more on their internal senses - proprioception, thirst, pain, hunger, etc. (Introverted Sensing)</p>
+
+<div class="choiceContainer"><a href='javascript:goTo("XSXJ");' class="choice">Introverted Sensing</a><a href='javascript:goTo("XSXP")' class="choice">Extroverted Sensing</a></div></div>`,
+XSXJ:`<p class="bluescreen">Introverted Sensing (XSXJ). The Guardian, Logistical. What has worked in the past is more important than trying new things. The more you do something the more you come to like it.</p>
+
+<p>A rush of memories flooded into my mind and I would have fallen if the frozen world of the blue screen wasn't holding me in place.</p>
+
+<p>I dismissed the blue screen so that I could sink to my knees in the grass and hold my head that was radiating pain with a red heat.</p>
+
+<p>I could feel a new inner sense, like drinking a glass of water after being in a desert. My new memories guided me as though I'd done it thousands of times before, and with a flex of my will a healing spell sank into my brain. The burning fire of the pain snuffed out like a candle.</p>
+
+<p>I revelled in the relief even as a new blue screen froze the world again.</p>
+
+<div class="bluescreen"><p>Do you consider how your decisions impact those around you (Extroverted Feeling)?</p>
+
+<p>Or are the decisions you make based mostly on the facts, with limited emotional input (Extroverted Thinking)?</p>
+
+<div class="choiceContainer"><a href='javascript:goTo("XSFJ");' class="choice">Feeling</a><a href='javascript:goTo("XSTJ")' class="choice">Thinking</a></div></div>`,
+XSXP:`<p class="bluescreen">Extroverted Sensing (XSXP). The Artisan, Tactical. What is happening right now is more important than what happened in the past or what will happen in the future. You are fully present in the moment.</p>
+
+<p>When I dismissed the blue screen and turned back around there were two groups of people emerging from opposite sides of the glade. Leather armour and short spears made up the majority of equipment of both groups. The ones from the left had strictly matching equipment, an organised military force, where the ones from the right were more irregular and individualistic, some of which were obviously higher quality even at this distance.</p>
+
+<p>How they organised themselves matched their presentation, the unified group lining up in neat lines while the other group clumped up in a mob that grew into the glade.</p>
+
+<p>I started to back toward the closest treeline and a shout went up from both sides that was cut off by another blue screen appearing.</p>
+
+<div class="bluescreen"><p>Do you do what is right, helping people even if it breaks the rules (Introverted Feeling)?</p>
+
+<p>Or do you use your expertise to jump in and fix things before leaving again (Introverted Thinking)?</p>
+<div class="choiceContainer"><a href='javascript:goTo("XSFP");' class="choice">Feeling</a><a href='javascript:goTo("XSTP")' class="choice">Thinking</a></div></div>`,
+XSTJ:`<p class="bluescreen">Extroverted Thinking, Introverted Sensing (XSTJ). The Administrator, Regulating. Objective, logical, organised. The rules are the most important thing.</p>
+
+<p>I wasn't supposed to be here. This wasn't what I was supposed to be doing. There was something... More. Something next, maybe?</p>
+
+<p>The memories that I had been given felt natural, but they were obviously artificial. They lacked detail or any sense of history. They didn't give me any sense of the rules, which was impossible if they were memories I had made. They let me understand my magic, but that was about all.</p>
+
+<p>Dismissing the screen, I could feel the magic energy inside myself, like a metaphysical extra pair of lungs. As I paid more attention to it there was a noticeable tether leading... Back... Somewhere. My memories showed me how to activate the spell that would return me, but not what I would be returning to. With the field I was in not having any answers I set about building the spellform with my will.</p>
+
+<p>The spell reached its peak and activated as a blue screen appeared, freezing the world in the moment of travel.</p>
+
+<div class="bluescreen"><p>Do you want productivity first (Extroverted)?</p>
+
+<p>Or do you want stability first (Introverted)?</p>
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ESTJ');">Extroverted</a><a class="choice" href="javascript:goTo('ISTJ');">Introverted</a></div></div>`,
+XSFJ:`<p class="bluescreen">Extroverted Feeling, Introverted Sensing (XSFJ). The Conservator, Supporting. Responsible, traditional, loyal. How people feel is the most important thing.</p>
+
+<p>I dismissed the blue screen and dug my fingers into the rich loamy earth below me. This was good, I was at peace in the place of my forefathers. I could feel them watching over me, giving me guidance.</p>
+
+<p>I got to my feet, dusting off my hands. Slow measured steps, the same my father and his father before him had taken, took me to the stream flowing along the edge of the glade.</p>
+
+<p>A set of steps led down into the depths of the stream, worn in the centre from the tread of generations. I followed them down, the chill water rising until it was up to my neck. With a deep breath I stepped forward off the steps and into the depths of the stream. Before I sank more than another step down a blue screen appeared to me.</p>
+
+<div class="bluescreen"><p>Are you comfortable making decisions in the moment (Extroverted)?</p>
+
+<p>Or do you prefer to take the time to really understand how your decisions will affect people (Introverted)?</p>
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ESFJ');">Extroverted</a><a class="choice" href="javascript:goTo('ISFJ');">Introverted</a></div></div>`,
+XSTP:`<p class="bluescreen">Extroverted Sensing, Introverted Thinking (XSTP). The Operator, Expediting. Adaptable, spontaneous, practical. Interesting and exciting problems and situations are the most important things.</p>
+
+<p>Waving away the blue screen I reversed my retreat and headed toward the centre of the field. One person from both groups came out to meet me, an officer and one of the better-equipped individuals who was wielding a giant sword.</p>
+
+<p>They both stopped at an equal distance from me and each other, just close enough for us not to have to shout.</p>
+
+<p>"Lovely weather for it," I said.</p>
+
+<p>"What?" the officer asked, while the swordsman grinned.</p>
+
+<p>"You lot look like you're sizing up for a battle," I said. "It's good weather for it. Just a little bit chill, no clouds or rain, and the ground is firm and dry."</p>
+
+<p>A blue screen appeared as the swordsman was opening his mouth to speak.</p>
+
+<div class="bluescreen"><p>Do you immediately move on to finding the next problem to fix (Extroverted)?</p>
+
+<p>Or do you fix the problem and then fade into the background (Introverted)?</p>
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ESTP');">Extroverted</a><a class="choice" href="javascript:goTo('ISTP');">Introverted</a></div></div>`,
+XSFP:`<p class="bluescreen">Extroverted Sensing, Introverted Feeling (XSFP). The Entertainer, Improvising. Creative, kind, supportive. Presentation is the most important thing.</p>
+
+<p>I dismissed the screen and continued backing away. The shouting continued, each side riling themselves up for the coming fight.</p>
+
+<p>I made it to the trees without either side paying attention to me. The smell of pine strong in my nose and the wind more chill now that I was out of the sun.</p>
+
+<p>The shouting quieted down as one person from each side headed toward the centre. In the silence I could hear movement in the forest behind me from both directions.</p>
+
+<p>The trees were too thick to see very far but I caught a flash of motion alarmingly close and dropped to the ground as an arrow thunked into the tree I'd been standing next to, just barely missing.</p>
+
+<p>I rolled around to the far side of the tree and a blue screen appeared.</p>
+
+<div class="bluescreen"><p>Do you prefer to be the centre of the party (Extroverted)?</p>
+
+<p>Or do you prefer interacting with smaller groups (Introverted)?</p>
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ESFP');">Extroverted</a><a class="choice" href="javascript:goTo('ISFP');">Introverted</a></div></div>`,
+ESTJ:`<p class="bluescreen">ESTJ. The Supervisor, Enforcing. You lead with Extroverted Thinking, you work to make the world conform to existing rules and laws.</p>
+
+<p>I could see both my origin and my destination with perfect clarity at the same time. The impossibility of it was giving me a headache. Dismissing the blue screen snapped me to my destination.</p>
+
+<p>"Welcome back, Dann," a man in garish red robes in front of me said. "Obviously no memory issues, as you were able to return. Did it work?"</p>
+
+<p>I had no idea who this person was. But they'd given me enough context to give a report.</p>
+
+<p>"Almost complete memory loss, actually," I said. "I have memories of how to spellcast, but that is about it."</p>
+
+<p>"You're kidding," he said, followed by a long pause where he inspected me. "You're not kidding. Wait here, I'll get Jalaxian, he'll be able to help."</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ISTJ:`<p class="bluescreen"><p>ISTJ. The Inspector, Certifying. You lead with Introverted Sensing, you trust the past, comparing what is happening now to what happened then in an effort to maintain consistency.</p>
+
+<p>This was a glitch in the system, for sure. Beyond the blue screen that had frozen the world only the people had loaded and none of the walls, ceilings, or even floors that those people were standing on. They all looked as though they were floating in mid-air.</p>
+
+<p>I must have teleported back to the middle floors of an enormous building from the number of people I could see around, above, and below me.</p>
+
+<p>This world was a simulation, I remembered.</p>
+
+<p>I dismissed the blue screen and the loop immediately ended.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ESFJ:`<p class="bluescreen"><p>ESFJ. The Provider, Supplying. You lead with Extroverted Feeling, you work to hold your group together.</p>
+
+<p>That is what I was doing here, yes, upholding my people's traditions in order to keep our ties to each other, and those who came before, strong.</p>
+
+<p>I dismissed the screen and there was a tug from the core of my magic, pulling me inwards.</p>
+
+<p>The pressure from the spell built inside me, matching the pressure as I sank into the depths of the stream.</p>
+
+<p>With a twitch of my will, I accepted the summoning spell with a pop.</p>
+
+<p>I was standing on top of an altar in a candle-lit stone room, with six people surrounding the altar in dark hooded robes.</p>
+
+<p>Very sinister. But these were my people.</p>
+
+<p>"It worked," one of them said quietly.</p>
+
+<p>"Shh," another said. "We greet the honoured ancestor. We have need of your wisdom, and strength."</p>
+
+<p>They all bowed very precisely, as was proper.</p>
+
+<p>"Very well," I said. "Take me to the current clan leader."</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ISFJ:`<p class="bluescreen">ISFJ. The Protector, Securing. You lead with Introverted Sensing, you are a great listener and a true altruist.</p>
+
+<p>I had a moment of panic, worse than stepping into the unknown of the depths of the stream. The blue screen forced me to remember that these memories, the foundation of who I was, weren't mine. They were given to fill in for the memories I didn't have.</p>
+
+<p>I couldn't breathe in the frozen world, my lungs locked in place.</p>
+
+<p>I dismissed the blue screen, and then couldn't breathe because I was deep underwater.</p>
+
+<p>My breath left me in an explosion of bubbles. And then there was air around me, and a spectral blue form in front of me.</p>
+
+<p>"Be at peace child of my line," she said. "You are here to learn who you could be."</p>
+
+<p>"I greet the grand-ancestor," I said, falling back onto the memories.</p>
+
+<p>"Remember this," she said. "<strong><em>Protect those you call family.</em></strong>"</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ESTP:`<p class="bluescreen">ESTP. The Promotor, Persuading. You lead with Extroverted Sensing, you are out there, getting things done.</p>
+
+<p>I dismissed the screen, interested in what he was going to say.</p>
+
+<p>"Are you not one of their operatives?" he asked. "Didn't you set this up?"</p>
+
+<p>"No," I said. "I got here by accident."</p>
+
+<p>"No you didn't," the military man said. "You are coming back with us to answer for your crimes."</p>
+
+<p>He pulled out a pair of restraints and walked towards me, the swordsman walking forward as well.</p>
+
+<p>When they were within fighting range the swordsman stopped and threw me a smaller sword from his back.</p>
+
+<p>I caught it and swept it from its scabbard, making the blade dance in a complicated pattern that included slicing through the restraints the military man was holding. I ended with the point of the blade pointing at his throat.</p>
+
+<p>"Good weight and balance," I said. "I don't think I will be going with you, no. Lovely weather for a battle."</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ISTP:`<p class="bluescreen">ISTP. The Crafter, Instrumenting. You lead with Introverted Thinking, pulling things apart to find out how they tick, then putting them back together, better.</p>
+
+<p>I looked at the blue screen, really focusing on it. Nothing I did interacted with it, the only thing I could do was dismiss it, which I did.</p>
+
+<p>"It is a great day for it," the swordsman said. "I can lend you a sword if you wanted to join in?"</p>
+
+<p>"What madness is this?" the military man asked. "We're here to discuss the terms of your surrender."</p>
+
+<p>"Nah," the swordsman said. "I like our chances. So how about it, guy, want to join our side?"</p>
+
+<p>Of the two sides, the military one didn't appeal to me at all. Highly structured, being told what to do, blindly following orders to fight.</p>
+
+<p>I shrugged and nodded to the swordsman.</p>
+
+<p>"Sure," I said, walking to meet him.</p>
+
+<p>"You will both die here then," the military man said, leaving in a huff.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ESFP:`<p class="bluescreen">ESFP. The Performer, Demonstrating. You lead with Extroverted Sensing, you are out there, showing how it's done.</p>
+
+<p>I could talk my way out of this. Confidence was key.</p>
+
+<p>I dismissed the screen and stood up, taking a few moments to brush off the pine needles that had gotten all over me. I squared my shoulders and stepped out, raising my hands in front of me.</p>
+
+<p>"Peace, friend," I said. "I'm not with them."</p>
+
+<p>"You're not with us, either," the archer said, an arrow pointed at me. "In this place, at this time, that makes you an enemy."</p>
+
+<p>"Nope, I'm a friend," I said with a grin.</p>
+
+<p>There was a flicker of motion to the right.</p>
+
+<p>"Look out," I said, pointing that way.</p>
+
+<p>He reacted impressively fast, turning and firing without seeming to aim. An arrow glanced off the tree next to him and disappeared into the forest and a man in the military armour fell down with an arrow in his heart.</p>
+
+<p>"See," I said. "A friend."</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ISFP:`<p>ISFP. The Composer, Synthesizing. You lead with Introverted Feeling, always looking to authentically express yourself.</p>
+
+<p>There was another archer just releasing his arrow at me from this side of the tree. I could see him past the edge of the blue screen.</p>
+
+<p>I dismissed the screen and pushed against the tree to change my direction, the rough bark scraping my palms.</p>
+
+<p>The arrow stuck up from the dirt where I would have been. The tear in the left shoulder of my shirt, and the deep scratch below it, showed how close it had come.</p>
+
+<p>"Wait!" I shouted, raising my empty hands. "I'm unarmed, you wouldn't shoot someone who was unarmed and here by accident, would you?"</p>
+
+<p>"Yes, I would," came from the direction of the first arrow.</p>
+
+<p>I clenched my eyes tight as the pfft sound of another arrow firing came to me.</p>
+
+<p>"Well I wouldn't," the second archer said. "Come on, our leader will want to speak with you."</p>
+
+<p>I wasn't shot. A body thumped to the ground behind me.</p>
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
 }
 
 goTo('Loop');
@@ -343,17 +687,19 @@ function goTo(loc)
     if(!story_pieces[loc]) loc='LoopMissing';
   }
   var b=document.body;
-  b.innerHTML='<h1>'+loc+'</h1>';
+  var title=loc;
+  if(loop==16) title="The End";
+  b.innerHTML='<h1>'+title+'</h1>';
   if(seen.length>0 && loc.indexOf('Loop')==0)
   {
     var total=Object.keys(story_pieces).length;
     b.innerHTML+='<h2 class="progress">'+seen.length+' of '+total+' pieces seen</h2>';
-    if(seen.length==total)b.innerHTML='<p>&lt;&lt;You\'ve read all that is written, refresh the page to reset the story.&gt;&gt;</p>';
+    //if(seen.length==total)b.innerHTML='<p>&lt;&lt;You\'ve read all that is written, refresh the page to reset the story.&gt;&gt;</p>';
   }
   if(!story_pieces[loc])
   {
-    goTo('Loop');
-    //b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
+    //goTo('Loop');
+    b.innerHTML+=`<p>This piece of writing is missing, somehow, and it really shouldn't be... Let the author know that '${loc}' is missing?</p><a href='javascript:goTo("Loop");' class="choice">Complete loop</a>`;
     return;
   }
   b.innerHTML+=story_pieces[loc];
