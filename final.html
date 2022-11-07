@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body
+{
+  background:black;
+  color:white;
+  margin:10px;
+  text-align:center;
+}
+@media (min-width:1200px)
+{
+  body
+  {
+    width:1000px;
+    margin:auto;
+  }
+}
+.bluescreen
+{
+  border:1px solid rgba(128,128,255,0.7);
+  background:rgba(64,64,64,0.7);
+  padding:5px;
+}
+.choiceContainer
+{
+  margin-top:10px;
+}
+.choice
+{
+  display:inline-block;
+  padding:10px;
+  color:rgba(192,192,255,0.9);
+  text-decoration:none;
+  border:1px solid rgba(192,192,255,0.9);
+  background:rgba(0,0,255,0.2);
+}
+.choice.seen
+{
+  color:rgba(255,255,0,0.9);
+  border:1px solid rgba(255,255,0,0.9);
+  background:rgba(255,255,0,0.2);
+}
+.choice.allSeen
+{
+  color:rgba(128,128,128,0.9);
+  border:1px solid rgba(128,128,128,0.9);
+  background:rgba(128,128,128,0.2);
+}
+.choice.missing
+{
+  color:rgba(255,0,0,0.9);
+  border:1px solid rgba(255,0,0,0.9);
+  background:rgba(255,0,0,0.2);
+}
+.progress
+{
+  margin:0;
+  font-size:0.75em;
+}
+</style>
+  </head>
+  <body>
+  </body>
+<script type="text/javascript">
+var loop=0;
+var greySeen=false;
+var seen=[];
+var story_pieces={
+LoopMissing:`<div class="bluescreen">&lt;&lt;This loop not written in the 2,500 word excerpt. You can continue to make choices to explore the rest of what is written.&gt;&gt;
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop0:`<p>And then, without any warning, I was standing in a large circular room with no memory of how I'd gotten there. The room was divided into... Sixteen sections by glass walls, and in each section was a copy of me. Male, short blonde hair, plain dark clothing covering everything but the hands and the head.</p>
+
+<p>Almost all of them had already begun departing, the stone wall behind their section sliding out of the way. The one immediately to my left smirked and pointed to the wall behind me before leaving me alone in the room.</p>
+
+<p>As soon as I stepped toward the wall a blue screen appeared hovering in front of me.</p>
+
+<p>The red choice I could feel was "missing", whatever that meant, so I chose the other one.</p>
+
+<div class="bluescreen">Who are you, Dann? Who will you be? What is more natural to you? Choose, but know that the choice is not final. You will choose again.
+
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+Loop1:`<p>And then I was back in the starting room again. I took a deep breath, suppressing a sob, my emotions catching up with me now that I had a moment.</p>
+
+<p>Most of the copies of me were already leaving the room, only the one immediately to my right not moving. He was looking around with a dopey stunned look on his face that struck me as funny.</p>
+
+<p>Damn, I had been completely clueless. I pointed to the wall behind him and then turned to the wall behind me, triggering the blue screen.</p>
+
+<p>The Sensing choice was still red and missing, not that I had learned what that meant. The other choice was now yellow which I somehow just knew meant that the path was partially complete, it would start the same but with different choices that would lead to new experiences.</p>
+
+<div class="bluescreen"><p>And so you come back to the first choice. Choose and explore who you could be.</p>
+
+<div class="choiceContainer"><a href='javascript:goTo("XSXX");' class="choice">Sensing</a><a href='javascript:goTo("XNXX");' class="choice">Intuition</a></div></div>`,
+XNXX:`<p class="bluescreen">Intuition (XNXX). You are all about the theoretical and thinking through problems. Patterns and probabilities. What things mean is more important to you than what they are. Explanations and understanding over experience and facts.</p>
+
+<p>I dismissed the screen with a thought. The next room was large, with four tables filling most of the room with enough space to walk around and in between them. One person was standing along each of the walls, a man on my left and a woman across from me and to my right. They were wearing similar clothing to mine but in unique colours.
+
+<p>There were no exits to the room, and a glance behind me showed that the stone wall that I had entered through had closed without me noticing.
+
+<p>I headed down the gap between the tables to the centre of the room and the other three did the same. Just as I got there another blue screen appeared and from what I could see around it everyone else had paused mid-step.
+
+<div class="bluescreen">Another choice. What is more important to you: Feeling/empathy or Thinking/rationality?
+
+<div class="choiceContainer"><a href='javascript:goTo("XNFX");' class="choice">Feeling</a><a href='javascript:goTo("XNTX")' class="choice">Thinking</a></div></div>`,
+XNFX:`<p class="bluescreen">Intuitive Feeling (XNFX). The Idealist, Diplomatic. Harmony is more important than objective truth. Decisions are made with the heart more than the head. Teamwork is the answer. Solve the puzzle.</p>
+
+<p>I dismissed the screen and everything started moving again.</p>
+
+<p>"Hello," I said as the others arrived. "Let's work together to get this solved."</p>
+
+<p>The man who came from the left grunted. He was taller than me, solidly built, and with chiselled features twisted into a scowl.</p>
+
+<p>"The last room we were in failed because of one of them," he said. "They aren't worth working with."</p>
+
+<p>He pointed to the woman who came from the opposite side of the room from him. She was wearing lighter-coloured clothing and clutching a pendant in her hands.</p>
+
+<p>I was about to ask what he was talking about when another blue screen popped up, interrupting and freezing the world again.</p>
+
+<div class="bluescreen"><p>Do you make Intuitive leaps that you share with others, seeking internal harmony of your actions with your values (Perceiving)?</p>
+
+<p>Or is your Intuition about your inner world, your thoughts and ideas, and you seek external harmony between people (Judging)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('XNFP');">Perceiving</a><a class="choice" href="javascript:goTo('XNFJ');">Judging</a></div></div>`,
+XNTX:`<p class="bluescreen">Intuitive Thinking (XNTX). Rational, Strategic. What is objectively true is more important than how people feel. Decisions are made with the head more than the heart. Solving the problem is the answer.</p>
+
+<p>I tried to move with the screen still up but even though I didn't feel restrained nothing happened. Dismissing the screen unfroze everything. That could be useful if I ever needed time to think.</p>
+
+<p>The woman from the right, who was clutching a large ankh, was the first to speak.</p>
+
+<p>"Another room, and more faithless strangers," she said. "May my journey reach a destination soon."</p>
+
+<p>"You've done this before?" the man asked. "What is this place?"</p>
+
+<p>"The place in between places," she said. "Where we are tested before being allowed to move on."</p>
+
+<p>I was about to interject when another blue screen appeared in front of me.</p>
+
+<div class="bluescreen"><p>Do you make Intuitive leaps that you share with others, building an internal framework of reality (Perceiving)?</p>
+
+<p>Or is your Intuition about your inner world, your thoughts and ideas, and you seek to understand the laws and rules in the external world (Judging)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('XNTP');">Perceiving</a><a class="choice" href="javascript:goTo('XNTJ');">Judging</a></div></div>`,
+XNFJ:`<p class="bluescreen">Extroverted Feeling, Introverted Intuition (XNFJ). The Mentor, Developing. Warm, caring, and considerate. Everyone getting along is the most important thing.</p>
+
+<p>I dismissed the screen and stepped in front of the man, raising my hands to calm them.</p>
+
+<p>"Peace, friend," I said. "Everyone is different and deserves to be given a chance. This person..."</p>
+
+<p>I gestured to the woman.</p>
+
+<p>"Helen," she said in a small mousey voice.</p>
+
+<p>"Helen," I continued. "She wasn't the one who let you down in the past, right?"</p>
+
+<p>"She wasn't," the man said. "But that symbol means she's a Systemist. They can get it into their head to betray you for no reason."</p>
+
+<p>"He isn't wrong," Helen said. "The System is all, and we are directed by it. He went against it and was marked for his transgression."</p>
+
+<p>"You Bi-", the man said.</p>
+
+<p>"Yeah, that wasn't very helpful for the situation," I said, cutting him off. "Teamwork is-"</p>
+
+<p>A blue screen cut me off.</p>
+
+<div class="bluescreen"><p>Do you judge before knowing everything about a situation (Extroverted)?</p>
+
+<p>Or do you see problems that no one else seems to (Introverted)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ENFJ');">Extroverted</a><a class="choice" href="javascript:goTo('INFJ');">Introverted</div></div>`,
+XNFP:`<p class="bluescreen">Extroverted Intuition, Introverted Feeling (XNFP). The Advocate, Mediating. Ethical, open-minded, moral. Honouring your core beliefs is the most important thing.</p>
+
+<p>A look of fear was frozen on the pendant woman's face. The other woman in darker clothing was stepping back, she didn't look like she was going to take a side.</p>
+
+<p>The man easily outweighed me and it was all muscle. Not someone I had much of a chance of beating in a fight.</p>
+
+<p>I dismissed the blue screen.</p>
+
+<p>"What is your problem?" I asked the man.</p>
+
+<p>"I already told you," the man said, stepping forward with his huge fists clenched. "They start spouting religious nonsense and then the next thing you know they've sabotaged the room. I'm going to enjoy taking them out of the equation."</p>
+
+<p>"Nope," I said, stepping forward. "Not going to happen."</p>
+
+<p>The other woman was frowning in disgust. The woman with the pendant was cowering behind me.</p>
+
+<p>A blue screen appeared before the man decided what he was going to do.</p>
+
+<div class="bluescreen"><p>Do you jump into new projects before retreating to process them emotionally (Extroverted)?</p>
+
+<p>Or do you first need to feel strongly about a project before starting it (Introverted)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ENFP');">Extroverted</a><a class="choice" href="javascript:goTo('INFP');">Introverted</a></div></div>`,
+INFJ:`<p class="bluescreen">INFJ. The Counselor, Guiding. NiFeTiSe. You lead with Introverted Intuition, you understand what is going wrong in the group. You are private and prefer to work in the background.</p>
+
+<p>I let the freeze of the blue screen give me time to think. There was something deeper at play here, and I think I saw what it was. I dismissed the blue screen.</p>
+
+<p>"- what the System wants for us to succeed at this room," I continued. "You... Guy?..."</p>
+
+<p>"Joshua," the man said.</p>
+
+<p>"Joshua," I said. "The System put you here to have you fail again because of your prejudice against Systemists. And this time it will be your fault that you fail.</p>
+
+<p>"And you, Helen, the System said to solve the problem," I continued. "But it said that teamwork is the answer; we are the problem."</p>
+
+<p>"You can see the system?" Helen asked.</p>
+
+<p>"Yes?" I said. "Blue screens appear and the world stops for me to make a choice."</p>
+
+<p>"It's you," Helen said. "This is all for you. And you wish for us to work together. Very well. I apologise Joshua."</p>
+
+<p>Joshua nodded, looking shocked.</p>
+
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ENFJ:`<p class="bluescreen">ENFJ. The Teacher, Educating. FeNiSeTi. You lead with Extroverted Feeling, acting to bring harmony to the group. Affirmations come naturally to you.</p>
+
+<p>"- the answer to this room," I said, dismissing the screen immediately. "Surely we're all intelligent enough that we can work together long enough to succeed? Helen, you take this table."</p>
+
+<p>I looked at the man and turned my palm up to him.</p>
+
+<p>"Jonathan," he said.</p>
+
+<p>"Jonathan," I said. "You take that one. That leaves this one here for me, Dann, and the last for..."</p>
+
+<p>"Lucy," the other woman said.</p>
+
+<p>"Lucy," I said. "Call out what you find."</p>
+
+<p>"I have four buttons on my table," Lucy said.</p>
+
+<p>"Same here," Jonathan said, quickly followed by Helen.</p>
+
+<p>Mine had the same, symbols on all four, though only one that I recognised - the Systemist symbol.</p>
+
+<p>"I know what three of these are," Lucy said. "We each take the tables that match our symbols. Helen is at hers already. Jonathan has the death symbol, that's mine. Dann is Anti-Systemist, that's Jonathan's. And mine is 'Artificial', which must be Dann's."</p>
+
+<p>We all swapped to the tables Lucy pointed out and the world froze.</p>
+
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+INFP:`<p class="bluescreen">INFP. The Healer, Conciliating. You lead with Introverted Feeling, prioritising what is important to you. You are a great listener and protect the feelings of those close to you.</p>
+
+<p>I wasn't going to let a man beat up a defenseless woman, I don't care what his reasons are. I'm not going to stand aside just because I can't win.</p>
+
+<p>I dismissed the blue screen put up my fists ready to fight.</p>
+
+<p>The man grunted again.</p>
+
+<p>"What even is the clear condition of this room," he said. "Oh well, I'll figure it out after going through you."</p>
+
+<p>"Teamwork is the answer," I said. "Teamwork against you."</p>
+
+<p>He swung his fist at my chin and I wasn't able to get out of the way. The next thing I knew the pendant woman was helping me up off the ground.</p>
+
+<p>The other woman was punching the man in the side with short vicious punches. There was a crack of his ribs breaking, then he backhanded her and sent her flying onto one of the tables.</p>
+
+<p>I charged him and threw my shoulder into his broken ribs.</p>
+
+<p>His neck hit the edge of the table with a crack and he fell and didn't get back up.</p>
+
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+ENFP:`<p class="bluescreen">ENFP. The Champion, Motivating. You lead with Extroverted Intuition, acting to try new things. You help those in need and show appreciation for people.</p>
+
+<p>I dismissed the blue screen and immediately after there was a sharp stabbing pain in my back.</p>
+
+<p>I turned, knocking the woman with the pendant back.</p>
+
+<p>The lower third of the pendant, about the length of my thumb, was a blade covered in my blood. She'd stabbed me.</p>
+
+<p>"I told you," the man said. "Get up on the table out of her range. You, other lady, help him."</p>
+
+<p>I went to reply and coughed up blood instead. My back still in searing pain I rolled up onto the table furtherst from the maniac with the blade.</p>
+
+<p>The other woman climbed onto one of the tables closest to her and then jumped over to mine.</p>
+
+<p>My vision was fading when a wave of ice flooded into my wound and the pain vanished.</p>
+
+<p>I gasped and then reflexively coughed, but the blood in my lungs was gone too.</p>
+
+<p>The woman with the pendant was laying on the ground with her neck bent the wrong way. The man had gashes in his arms that were closing under the glowing hands of the other woman.</p>
+
+<p>"Thank you, both," I said.</p>
+
+<p>I was about to ask about the magical healing when the world froze with the loop ending.</p>
+
+<div class="bluescreen"><a class="choice" href="javascript:goTo('Loop');">Complete Loop</a></div>`,
+XNTJ:`<p class="bluescreen">Extroverted Thinking, Introverted Intuition (XNTJ). The Coordinator, Arranging. Intense, efficient, competent. Having a plan is the most important thing.</p>
+
+<p>I dismissed the blue screen.</p>
+
+<p>"So you all see the blue screens too?" I asked.</p>
+
+<p>The woman with the ankh snapped her head around to look at me.</p>
+
+<p>"No," she said. "There is only one person in here with direct System access. All other Systemists use their pendants to get vague impressions of the System's intent."</p>
+
+<p>She held up her ankh.</p>
+
+<p>"What has the System told you?" the other woman asked.</p>
+
+<p>"Uh..." I said. "Nothing that seems relevant to the room. 'Solving the problem is the answer.'"</p>
+
+<p>There was a flicker on the tables each of which now had posters on them that weren't there before.</p>
+
+<p>"That looks like what we need to be focusing on," I said, glad of the distraction.</p>
+
+<p>The world froze with a blue screen.</p>
+
+<div class="bluescreen"><p>Do you want to lead the group, making sure everyone is working to solve the problem (Extroverted)?</p>
+
+<p>Or do you prefer to make everything go to plan from the shadows (Introverted)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ENTJ');">Extroverted</a><a class="choice" href="javascript:goTo('INTJ');">Introverted</a></div></div>`,
+XNTP:`<p class="bluescreen">Extroverted Intuition, Introverted Thinking (XNTP). The Engineer, Constructing. Inquisitive, intellectual, creative. Problem-solving and understanding are the most important things.</p>
+
+<p>"Tested," I said. "What sort of tests have you seen?"</p>
+
+<p>"Many," she said. "The System can set people against each other in fights, or have the only way to exit the room be a puzzle that requires all of the people added to solve."</p>
+
+<p>"And how do we tell what sort of room this is?" I asked.</p>
+
+<p>The tables around us lit up. Two in opposite corners filled with mazes rising from their surfaces. The other two tables were suddenly holding rows of small mirrors on stands. A beam of light started in the centre of the maze nearest to me.</p>
+
+<p>"So," I said. "It's a puzzle room. Mirrors to redirect the light beam around the maze. The other centre is dark, so that is the destination."</p>
+
+<p>Before anyone could respond another blue screen was in front of me.</p>
+
+<div class="bluescreen"><p>Do you ask for help if you need it (Extroverted)?</p>
+
+<p>Or do you prefer to do everything yourself (Introverted)?</p>
+
+<div class="choiceContainer"><a class="choice" href="javascript:goTo('ENTP');">Extrovert<a class="choice" href="javascript:goTo('INTP');">Introvert</a></div></div>`,
+}
+
+goTo('Loop');
+
+function goTo(loc)
+{
+  if(loc=='Loop')
+  {
+    loc+=loop;
+    if(!story_pieces[loc]) loc='LoopMissing';
+  }
+  var b=document.body;
+  b.innerHTML='<h1>'+loc+'</h1>';
+  if(seen.length>0 && loc.indexOf('Loop')==0)
+  {
+    var total=Object.keys(story_pieces).length;
+    b.innerHTML+='<h2 class="progress">'+seen.length+' of '+total+' pieces seen</h2>';
+    if(seen.length==total)b.innerHTML='<p>&lt;&lt;You\'ve read all that is written, refresh the page to reset the story.&gt;&gt;</p>';
+  }
+  if(!story_pieces[loc])
+  {
+    goTo('Loop');
+    //b.innerHTML+=`<p>Not written yet</p><a href='javascript:goTo("Loop0");' class="choice">Return to Loop0</a>`;
+    return;
+  }
+  b.innerHTML+=story_pieces[loc];
+
+  if(seen.indexOf(loc)==-1)
+  {
+    seen.push(loc);
+    if(loc.indexOf('X')==-1 && loc.indexOf('Loop')==-1) loop++;
+  }
+
+  var choices=Array.from(document.querySelectorAll('.choice'));
+  var available=Object.keys(story_pieces);
+  for(var i=0; i<choices.length; i++)
+  {
+    var choice=choices[i].href.split('goTo(')[1].split(')')[0].slice(1,-1);
+    if(choice=='Loop') continue;
+    if(seen.indexOf(choice)!=-1)
+    {
+      choices[i].classList.toggle('seen', true);
+      choices[i].title='Partially completed, some new paths left to explore';
+    }
+    if(!story_pieces[choice])
+    {
+      choices[i].classList.toggle('missing', true);
+      choices[i].title='Missing';
+    }
+    var possible_ends=['ENFJ', 'INFJ', 'ENFP', 'INFP', 'ENTJ', 'INTJ', 'ENTP', 'INTP', 'ESTJ', 'ISTJ', 'ESFJ', 'ISFJ', 'ESTP', 'ISTP', 'ESFP', 'ISFP'];
+    var ends=[];
+    for(var j=0; j<possible_ends.length; j++)
+    {
+      var p=possible_ends[j];
+      if(!story_pieces[p])
+      {
+        p='X'+p.slice(1);
+      }
+      if(!story_pieces[p])
+      {
+        continue;
+      }
+      var pass=false;
+      for(var k=0; k<4; k++)
+      {
+        if(choice[k]!='X' && choice[k]!=p[k])
+        {
+          pass=true;
+          break;
+        }
+      }
+      if(pass) continue;
+      ends.push(p);
+    }
+    var all_seen=true;
+    for(var j=0; j<ends.length; j++)
+    {
+      if(seen.indexOf(ends[j])==-1)
+      {
+        all_seen=false;
+        break;
+      }
+    }
+    if(all_seen && choices[i].title!='Missing')
+    {
+      choices[i].classList.toggle('allSeen', true);
+      choices[i].title='Fully completed, no new paths to explore';
+      if(!greySeen)
+      {
+        greySeen=true;
+        var p=document.createElement('p');
+        p.innerHTML=`One of the choices was a new colour, grey. There were no new experiences behind that choice, I'd seen all it had to show. I knew I could live it again, but I couldn't change what happened, and wouldn't make any progress in choosing it.`;
+        document.body.insertBefore(p, document.querySelector('.choiceContainer').parentNode);
+      }
+    }
+  }
+}
+</script>
+</html>
