@@ -764,6 +764,7 @@ function goTo(loc)
     {
       choices[i].classList.toggle('allSeen', true);
       choices[i].title='Fully completed, no new paths to explore';
+      if(loop!=12) choices[i].href='javascript:void(0);';
       if(!greySeen)
       {
         greySeen=true;
